@@ -7,16 +7,54 @@
 //
 
 import UIKit
+import Foundation
 
 class CanadaViewController: UIViewController {
 
+    var httpUtility:HttpUtility?
+    var canadaList:CanadaModel?
+    var canadaTableView = UITableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+        httpUtility = HttpUtility()
+        retrieveDataFromApi()
     }
     
-
+    //MARK: - Api Call
+     func retrieveDataFromApi() {
+         
+         if Reachability.isConnectedToNetwork(){
+             print("Internet Connection Available!")
+             
+             // make api call
+             httpUtility?.getApiData(requestUrl: Common.apiString, resultType: CanadaModel.self, completionHandler: { (canadaResponse) in
+                 self.canadaList = canadaResponse
+                 //debugPrint("response = \(String(describing: self.canadaList))")
+                 print("title = \(self.canadaList?.title ?? "")")
+                 
+                 DispatchQueue.main.async {
+                     
+                     self.navigationItem.title = self.canadaList?.title
+                     self.canadaTableView.reloadData()
+                 }
+             })
+             
+         }else{
+             print("Internet Connection not Available!")
+             
+             // create the alert
+             let alert = UIAlertController(title: "Message", message: "Internet Connection not Available!", preferredStyle: UIAlertController.Style.alert)
+             
+             // add an action (button)
+             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {action in
+             }))
+             
+             // show the alert
+             self.present(alert, animated: true, completion: nil)
+         }
+     }
     /*
     // MARK: - Navigation
 

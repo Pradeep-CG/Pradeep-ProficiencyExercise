@@ -12,6 +12,10 @@
 		275811C224AF59990060D578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275811C124AF59990060D578 /* Assets.xcassets */; };
 		275811C524AF59990060D578 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 275811C324AF59990060D578 /* LaunchScreen.storyboard */; };
 		275811D124AF5B050060D578 /* CanadaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275811D024AF5B050060D578 /* CanadaViewController.swift */; };
+		275811D824AF79A40060D578 /* HttpUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275811D724AF79A40060D578 /* HttpUtility.swift */; };
+		275811DA24AF79C60060D578 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275811D924AF79C60060D578 /* Common.swift */; };
+		275811DC24AF79FB0060D578 /* CanadaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275811DB24AF79FB0060D578 /* CanadaModel.swift */; };
+		275811DE24AF7A920060D578 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275811DD24AF7A920060D578 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		275811C424AF59990060D578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		275811C624AF59990060D578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		275811D024AF5B050060D578 /* CanadaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaViewController.swift; sourceTree = "<group>"; };
+		275811D724AF79A40060D578 /* HttpUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtility.swift; sourceTree = "<group>"; };
+		275811D924AF79C60060D578 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		275811DB24AF79FB0060D578 /* CanadaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaModel.swift; sourceTree = "<group>"; };
+		275811DD24AF7A920060D578 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 		275811B724AF59940060D578 /* Pradeep-ProficiencyExercise */ = {
 			isa = PBXGroup;
 			children = (
+				275811D624AF797D0060D578 /* Services */,
 				275811CD24AF5AE20060D578 /* Common */,
 				275811CC24AF5AE20060D578 /* Controller */,
 				275811CF24AF5AE20060D578 /* Model */,
@@ -78,6 +87,7 @@
 		275811CD24AF5AE20060D578 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				275811D924AF79C60060D578 /* Common.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -92,8 +102,18 @@
 		275811CF24AF5AE20060D578 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				275811DB24AF79FB0060D578 /* CanadaModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		275811D624AF797D0060D578 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				275811D724AF79A40060D578 /* HttpUtility.swift */,
+				275811DD24AF7A920060D578 /* Reachability.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,8 +186,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275811DE24AF7A920060D578 /* Reachability.swift in Sources */,
+				275811D824AF79A40060D578 /* HttpUtility.swift in Sources */,
+				275811DC24AF79FB0060D578 /* CanadaModel.swift in Sources */,
 				275811B924AF59940060D578 /* AppDelegate.swift in Sources */,
 				275811D124AF5B050060D578 /* CanadaViewController.swift in Sources */,
+				275811DA24AF79C60060D578 /* Common.swift in Sources */,
 				275811BB24AF59940060D578 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
