@@ -14,6 +14,8 @@ class CanadaViewController: UIViewController {
     var httpUtility:HttpUtility?
     var canadaList:CanadaModel?
     var canadaTableView = UITableView()
+    let cache = NSCache<NSString, UIImage>()
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,9 @@ class CanadaViewController: UIViewController {
         canadaTableView.translatesAutoresizingMaskIntoConstraints = false
         canadaTableView.delegate = self
         canadaTableView.dataSource = self
+        canadaTableView.refreshControl = refreshControl
+        // Configure Refresh Control
+        refreshControl.addTarget(self, action: #selector(refreshTableData(_:)), for: .valueChanged)
         
         canadaTableView.register(CanadaTableViewCell.self, forCellReuseIdentifier: "canadaCell")
         canadaTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -64,6 +69,7 @@ class CanadaViewController: UIViewController {
                 print("title = \(self.canadaList?.title ?? "")")
                 
                 DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
                     self.navigationItem.title = self.canadaList?.title
                     self.canadaTableView.reloadData()
                 }
@@ -77,7 +83,7 @@ class CanadaViewController: UIViewController {
             
             // add an action (button)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {action in
-    
+                self.refreshControl.endRefreshing()
             }))
             
             // show the alert
@@ -107,6 +113,27 @@ extension CanadaViewController: UITableViewDelegate, UITableViewDataSource{
         
         if let rowDict = canadaList?.rows[indexPath.row]{
             cell.rowData = rowDict
+        }
+        if let imgHref = canadaList?.rows[indexPath.row].imageHref {
+            
+            if (cache.object(forKey: imgHref as NSString) != nil) {
+                cell.rowImageView.image = Common.scaleUIImageToSize(image: cache.object(forKey: imgHref as NSString)!)
+            }
+            else{
+                httpUtility?.downloadImage(urlString: imgHref, index: indexPath, completionHandler: { (imageUrl,downloadedImage, imgIndexPath) in
+                    print("imageUrl = \(imageUrl)")
+                    
+                    DispatchQueue.main.sync {
+                        //cell.imageView?.image = self.scaleUIImageToSize(image: downloadedImage)
+                        self.cache.setObject(downloadedImage, forKey: imageUrl as NSString)
+                        //self.tblView.reloadData()
+                        self.canadaTableView.reloadRows(at: [imgIndexPath], with: .none)
+                    }
+                })
+            }
+        }
+        else{
+            cell.rowImageView.image = Common.scaleUIImageToSize(image: UIImage(named: "noImage")!)
         }
         
         return cell
