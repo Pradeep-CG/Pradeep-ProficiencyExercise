@@ -155,6 +155,7 @@
 				275811B224AF59940060D578 /* Frameworks */,
 				275811B324AF59940060D578 /* Resources */,
 				27771A6224B341B700DCD20B /* ShellScript */,
+				A3EA87CA4ECE17AD9778F55C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -227,6 +228,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		A3EA87CA4ECE17AD9778F55C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pradeep-ProficiencyExercise/Pods-Pradeep-ProficiencyExercise-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pradeep-ProficiencyExercise/Pods-Pradeep-ProficiencyExercise-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pradeep-ProficiencyExercise/Pods-Pradeep-ProficiencyExercise-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		DCA500E23C6BF00DB56EB801 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 struct HttpUtility {
-    // swiftlint:disable:next line_length
     func getApiData<T: Decodable>(requestUrl: String, resultType: T.Type, completionHandler:@escaping(_ result: T) -> Void) {
         if Common.verifyUrl(urlString: requestUrl) {
             let requestApiUrl = URL(string: requestUrl)!
@@ -30,7 +29,7 @@ struct HttpUtility {
             .resume()
         }
     }
-    // swiftlint:disable:next large_tuple line_length
+    // swiftlint:disable:next large_tuple
     func downloadImage(urlString: String, index: IndexPath, completionHandler: @escaping (_ result: (String, UIImage, IndexPath)) -> Void) {
         let session = URLSession(configuration: .default)
         //creating a dataTask

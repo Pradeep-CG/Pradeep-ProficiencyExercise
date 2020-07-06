@@ -44,23 +44,16 @@ class CanadaTableViewCell: UITableViewCell {
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(descriptionLabel)
         rowImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        // swiftlint:disable:next line_length
         rowImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constants.leadingValue).isActive = true
         rowImageView.widthAnchor.constraint(equalToConstant: Constants.imageWidth).isActive = true
         rowImageView.heightAnchor.constraint(equalToConstant: Constants.imageHeight).isActive = true
-        // swiftlint:disable:next line_length
         titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Constants.leadingValue).isActive = true
-        // swiftlint:disable:next line_length
         titleLabel.leftAnchor.constraint(equalTo: rowImageView.rightAnchor, constant: Constants.trailingValue).isActive = true
-        // swiftlint:disable:next line_length
         titleLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.leadingValue).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 35).isActive = true
-        // swiftlint:disable:next line_length
         descriptionLabel.leftAnchor.constraint(equalTo: rowImageView.rightAnchor, constant: Constants.trailingValue).isActive = true
-        // swiftlint:disable:next line_length
         descriptionLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.leadingValue).isActive = true
-        // swiftlint:disable:next line_length
         descriptionLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Constants.leadingValue).isActive = true
     }
     required init?(coder aDecoder: NSCoder) {

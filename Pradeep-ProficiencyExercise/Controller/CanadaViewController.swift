@@ -8,12 +8,12 @@
 
 import UIKit
 import Foundation
+import Kingfisher
 
 class CanadaViewController: UIViewController {
     var httpUtility: HttpUtility?
     var canadaList: CanadaModel?
     var canadaTableView = UITableView()
-    let cache = NSCache<NSString, UIImage>()
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,6 @@ class CanadaViewController: UIViewController {
     func retrieveDataFromApi() {
         if Reachability.isConnectedToNetwork() {
             // make api call
-            // swiftlint:disable:next line_length
             httpUtility?.getApiData(requestUrl: Constants.apiString, resultType: CanadaModel.self, completionHandler: { (canadaResponse) in
                 self.canadaList = canadaResponse
                 //debugPrint("response = \(String(describing: self.canadaList))")
@@ -60,7 +59,6 @@ class CanadaViewController: UIViewController {
             })
         } else {
             // create the alert
-            // swiftlint:disable:next line_length
             let alert = UIAlertController(title: Constants.messageTitle, message: Constants.messageBody, preferredStyle: UIAlertController.Style.alert)
              // add an action (button)
             alert.addAction(UIAlertAction(title: Constants.alertOk, style: UIAlertAction.Style.default, handler: { _ in
@@ -85,22 +83,22 @@ extension CanadaViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // swiftlint:disable:next line_length
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.canadaCellIdentifier, for: indexPath) as? CanadaTableViewCell
+        cell?.selectionStyle = .none
         if let rowDict = canadaList?.rows[indexPath.row] {
             cell?.rowData = rowDict
         }
         if let imgHref = canadaList?.rows[indexPath.row].imageHref {
-            if cache.object(forKey: imgHref as NSString) != nil {
-                cell?.rowImageView.image = Common.scaleUIImageToSize(image: cache.object(forKey: imgHref as NSString)!)
-            } else {
-                // swiftlint:disable:next line_length
-                httpUtility?.downloadImage(urlString: imgHref, index: indexPath, completionHandler: { (imageUrl, downloadedImage, imgIndexPath) in
-                     DispatchQueue.main.sync {
-                        self.cache.setObject(downloadedImage, forKey: imageUrl as NSString)
-                        self.canadaTableView.reloadRows(at: [imgIndexPath], with: .none)
-                    }
-                })
+            let url = URL(string: imgHref)!
+            let resource = ImageResource(downloadURL: url, cacheKey: imgHref)
+            cell?.rowImageView.kf.setImage(with: resource) { result in
+                switch result {
+                case .success(let value):
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
+                    cell?.rowImageView.image = Common.scaleUIImageToSize(image: UIImage(named: Constants.blankImageName)!)
+                }
             }
         } else {
             cell?.rowImageView.image = Common.scaleUIImageToSize(image: UIImage(named: Constants.blankImageName)!)
