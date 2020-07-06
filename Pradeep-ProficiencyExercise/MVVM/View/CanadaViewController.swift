@@ -11,14 +11,13 @@ import Foundation
 import Kingfisher
 
 class CanadaViewController: UIViewController {
-    var httpUtility: HttpUtility?
+    var canadaViewModel = CanadaViewModel()
     var canadaList: CanadaModel?
     var canadaTableView = UITableView()
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        httpUtility = HttpUtility()
         loadViewComponents()
         retrieveDataFromApi()
     }
@@ -46,34 +45,33 @@ class CanadaViewController: UIViewController {
     }
     // MARK: - Api Call
     func retrieveDataFromApi() {
-        if Reachability.isConnectedToNetwork() {
-            // make api call
-            httpUtility?.getApiData(requestUrl: Constants.apiString, resultType: CanadaModel.self, completionHandler: { (canadaResponse) in
-                self.canadaList = canadaResponse
+        canadaViewModel.getDataFromApi(apiUrl: Constants.apiString) { (response, status) in
+            if status {
+                self.canadaList = response
                 //debugPrint("response = \(String(describing: self.canadaList))")
                 DispatchQueue.main.async {
                     self.refreshControl.endRefreshing()
                     self.navigationItem.title = self.canadaList?.title
                     self.canadaTableView.reloadData()
                 }
-            })
-        } else {
-            // create the alert
-            let alert = UIAlertController(title: Constants.messageTitle, message: Constants.messageBody, preferredStyle: UIAlertController.Style.alert)
-             // add an action (button)
-            alert.addAction(UIAlertAction(title: Constants.alertOk, style: UIAlertAction.Style.default, handler: { _ in
-                self.refreshControl.endRefreshing()
-            }))
-            // show the alert
-            self.present(alert, animated: true, completion: nil)
+            } else {
+                // create the alert
+                let alert = UIAlertController(title: Constants.messageTitle, message: Constants.messageBody, preferredStyle: UIAlertController.Style.alert)
+                 // add an action (button)
+                alert.addAction(UIAlertAction(title: Constants.alertOk, style: UIAlertAction.Style.default, handler: { _ in
+                    self.refreshControl.endRefreshing()
+                }))
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
-}
+ }
 
 // MARK: - Table datasource and Delegate
 extension CanadaViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return canadaList?.rows.count ?? 0
+        return canadaViewModel.getNumberOfRows()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (canadaList?.rows[indexPath.row].rowDescription) != nil {
