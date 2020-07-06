@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27555CA924B3AFBE0036D1A0 /* Pradeep_ProficiencyExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27555CA824B3AFBE0036D1A0 /* Pradeep_ProficiencyExerciseTests.swift */; };
+		27555CB124B3B7250036D1A0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27555CB024B3B7250036D1A0 /* Constants.swift */; };
 		275811B924AF59940060D578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275811B824AF59940060D578 /* AppDelegate.swift */; };
 		275811BB24AF59940060D578 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275811BA24AF59940060D578 /* SceneDelegate.swift */; };
 		275811C224AF59990060D578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275811C124AF59990060D578 /* Assets.xcassets */; };
@@ -21,7 +23,21 @@
 		F159CC6E6080BEBC6F1AAE4E /* Pods_Pradeep_ProficiencyExercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E41005F52E5CF0F755174E75 /* Pods_Pradeep_ProficiencyExercise.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		27555CAB24B3AFBE0036D1A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 275811AD24AF59940060D578 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 275811B424AF59940060D578;
+			remoteInfo = "Pradeep-ProficiencyExercise";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		27555CA624B3AFBE0036D1A0 /* Pradeep-ProficiencyExerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pradeep-ProficiencyExerciseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27555CA824B3AFBE0036D1A0 /* Pradeep_ProficiencyExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pradeep_ProficiencyExerciseTests.swift; sourceTree = "<group>"; };
+		27555CAA24B3AFBE0036D1A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27555CB024B3B7250036D1A0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		275811B524AF59940060D578 /* Pradeep-ProficiencyExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pradeep-ProficiencyExercise.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		275811B824AF59940060D578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		275811BA24AF59940060D578 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +57,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		27555CA324B3AFBE0036D1A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		275811B224AF59940060D578 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -60,10 +83,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		27555CA724B3AFBE0036D1A0 /* Pradeep-ProficiencyExerciseTests */ = {
+			isa = PBXGroup;
+			children = (
+				27555CA824B3AFBE0036D1A0 /* Pradeep_ProficiencyExerciseTests.swift */,
+				27555CAA24B3AFBE0036D1A0 /* Info.plist */,
+			);
+			path = "Pradeep-ProficiencyExerciseTests";
+			sourceTree = "<group>";
+		};
 		275811AC24AF59940060D578 = {
 			isa = PBXGroup;
 			children = (
 				275811B724AF59940060D578 /* Pradeep-ProficiencyExercise */,
+				27555CA724B3AFBE0036D1A0 /* Pradeep-ProficiencyExerciseTests */,
 				275811B624AF59940060D578 /* Products */,
 				7476FDA0807E21AF4DA597FE /* Pods */,
 				097550C9D0C6FCBE41B6A3D2 /* Frameworks */,
@@ -74,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				275811B524AF59940060D578 /* Pradeep-ProficiencyExercise.app */,
+				27555CA624B3AFBE0036D1A0 /* Pradeep-ProficiencyExerciseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				275811D924AF79C60060D578 /* Common.swift */,
+				27555CB024B3B7250036D1A0 /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -157,6 +192,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		27555CA524B3AFBE0036D1A0 /* Pradeep-ProficiencyExerciseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27555CAF24B3AFBE0036D1A0 /* Build configuration list for PBXNativeTarget "Pradeep-ProficiencyExerciseTests" */;
+			buildPhases = (
+				27555CA224B3AFBE0036D1A0 /* Sources */,
+				27555CA324B3AFBE0036D1A0 /* Frameworks */,
+				27555CA424B3AFBE0036D1A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27555CAC24B3AFBE0036D1A0 /* PBXTargetDependency */,
+			);
+			name = "Pradeep-ProficiencyExerciseTests";
+			productName = "Pradeep-ProficiencyExerciseTests";
+			productReference = 27555CA624B3AFBE0036D1A0 /* Pradeep-ProficiencyExerciseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		275811B424AF59940060D578 /* Pradeep-ProficiencyExercise */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 275811C924AF59990060D578 /* Build configuration list for PBXNativeTarget "Pradeep-ProficiencyExercise" */;
@@ -187,6 +240,10 @@
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = Pradeep;
 				TargetAttributes = {
+					27555CA524B3AFBE0036D1A0 = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 275811B424AF59940060D578;
+					};
 					275811B424AF59940060D578 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
@@ -206,11 +263,19 @@
 			projectRoot = "";
 			targets = (
 				275811B424AF59940060D578 /* Pradeep-ProficiencyExercise */,
+				27555CA524B3AFBE0036D1A0 /* Pradeep-ProficiencyExerciseTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		27555CA424B3AFBE0036D1A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		275811B324AF59940060D578 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -282,6 +347,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		27555CA224B3AFBE0036D1A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27555CA924B3AFBE0036D1A0 /* Pradeep_ProficiencyExerciseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		275811B124AF59940060D578 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -291,6 +364,7 @@
 				275811DC24AF79FB0060D578 /* CanadaModel.swift in Sources */,
 				275811B924AF59940060D578 /* AppDelegate.swift in Sources */,
 				275811D124AF5B050060D578 /* CanadaViewController.swift in Sources */,
+				27555CB124B3B7250036D1A0 /* Constants.swift in Sources */,
 				275811DA24AF79C60060D578 /* Common.swift in Sources */,
 				275811BB24AF59940060D578 /* SceneDelegate.swift in Sources */,
 				27771A6B24B3A54300DCD20B /* CanadaViewModel.swift in Sources */,
@@ -299,6 +373,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27555CAC24B3AFBE0036D1A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 275811B424AF59940060D578 /* Pradeep-ProficiencyExercise */;
+			targetProxy = 27555CAB24B3AFBE0036D1A0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		275811C324AF59990060D578 /* LaunchScreen.storyboard */ = {
@@ -312,6 +394,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		27555CAD24B3AFBE0036D1A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6BF9ZGVZZA;
+				INFOPLIST_FILE = "Pradeep-ProficiencyExerciseTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Home.Pradeep-ProficiencyExerciseTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pradeep-ProficiencyExercise.app/Pradeep-ProficiencyExercise";
+			};
+			name = Debug;
+		};
+		27555CAE24B3AFBE0036D1A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6BF9ZGVZZA;
+				INFOPLIST_FILE = "Pradeep-ProficiencyExerciseTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Home.Pradeep-ProficiencyExerciseTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pradeep-ProficiencyExercise.app/Pradeep-ProficiencyExercise";
+			};
+			name = Release;
+		};
 		275811C724AF59990060D578 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -469,6 +591,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		27555CAF24B3AFBE0036D1A0 /* Build configuration list for PBXNativeTarget "Pradeep-ProficiencyExerciseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27555CAD24B3AFBE0036D1A0 /* Debug */,
+				27555CAE24B3AFBE0036D1A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		275811B024AF59940060D578 /* Build configuration list for PBXProject "Pradeep-ProficiencyExercise" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
