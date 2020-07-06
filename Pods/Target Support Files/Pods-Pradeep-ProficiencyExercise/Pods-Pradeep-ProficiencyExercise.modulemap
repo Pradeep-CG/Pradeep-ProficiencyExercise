@@ -1,0 +1,6 @@
+framework module Pods_Pradeep_ProficiencyExercise {
+  umbrella header "Pods-Pradeep-ProficiencyExercise-umbrella.h"
+
+  export *
+  module * { export * }
+}
