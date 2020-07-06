@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -79,11 +79,9 @@
 		275811B724AF59940060D578 /* Pradeep-ProficiencyExercise */ = {
 			isa = PBXGroup;
 			children = (
-				275811D624AF797D0060D578 /* Services */,
 				275811CD24AF5AE20060D578 /* Common */,
-				275811CC24AF5AE20060D578 /* Controller */,
-				275811CF24AF5AE20060D578 /* Model */,
-				275811CE24AF5AE20060D578 /* View */,
+				275811D624AF797D0060D578 /* Services */,
+				27771A6924B3A15100DCD20B /* MVVM */,
 				275811B824AF59940060D578 /* AppDelegate.swift */,
 				275811BA24AF59940060D578 /* SceneDelegate.swift */,
 				275811C124AF59990060D578 /* Assets.xcassets */,
@@ -93,12 +91,11 @@
 			path = "Pradeep-ProficiencyExercise";
 			sourceTree = "<group>";
 		};
-		275811CC24AF5AE20060D578 /* Controller */ = {
+		275811CC24AF5AE20060D578 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				275811D024AF5B050060D578 /* CanadaViewController.swift */,
 			);
-			path = Controller;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		275811CD24AF5AE20060D578 /* Common */ = {
@@ -112,6 +109,7 @@
 		275811CE24AF5AE20060D578 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				275811D024AF5B050060D578 /* CanadaViewController.swift */,
 				275811DF24AF95080060D578 /* CanadaTableViewCell.swift */,
 			);
 			path = View;
@@ -132,6 +130,16 @@
 				275811DD24AF7A920060D578 /* Reachability.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		27771A6924B3A15100DCD20B /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				275811CC24AF5AE20060D578 /* ViewModel */,
+				275811CE24AF5AE20060D578 /* View */,
+				275811CF24AF5AE20060D578 /* Model */,
+			);
+			path = MVVM;
 			sourceTree = "<group>";
 		};
 		7476FDA0807E21AF4DA597FE /* Pods */ = {
