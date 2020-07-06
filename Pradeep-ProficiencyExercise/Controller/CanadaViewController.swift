@@ -31,7 +31,7 @@ class CanadaViewController: UIViewController {
         canadaTableView.refreshControl = refreshControl
         // Configure Refresh Control
         refreshControl.addTarget(self, action: #selector(refreshTableData(_:)), for: .valueChanged)
-        canadaTableView.register(CanadaTableViewCell.self, forCellReuseIdentifier: "canadaCell")
+        canadaTableView.register(CanadaTableViewCell.self, forCellReuseIdentifier: Constants.canadaCellIdentifier)
         canadaTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         canadaTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         canadaTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -42,19 +42,16 @@ class CanadaViewController: UIViewController {
     }
     @objc private func refreshTableData(_ sender: Any) {
         // Fetch Data from api
-        print("refresh")
         retrieveDataFromApi()
     }
     // MARK: - Api Call
     func retrieveDataFromApi() {
         if Reachability.isConnectedToNetwork() {
-            print("Internet Connection Available!")
             // make api call
             // swiftlint:disable:next line_length
-            httpUtility?.getApiData(requestUrl: Common.apiString, resultType: CanadaModel.self, completionHandler: { (canadaResponse) in
+            httpUtility?.getApiData(requestUrl: Constants.apiString, resultType: CanadaModel.self, completionHandler: { (canadaResponse) in
                 self.canadaList = canadaResponse
                 //debugPrint("response = \(String(describing: self.canadaList))")
-                print("title = \(self.canadaList?.title ?? "")")
                 DispatchQueue.main.async {
                     self.refreshControl.endRefreshing()
                     self.navigationItem.title = self.canadaList?.title
@@ -62,12 +59,11 @@ class CanadaViewController: UIViewController {
                 }
             })
         } else {
-            print("Internet Connection not Available!")
             // create the alert
             // swiftlint:disable:next line_length
-            let alert = UIAlertController(title: "Message", message: "Internet Connection not Available!", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: Constants.messageTitle, message: Constants.messageBody, preferredStyle: UIAlertController.Style.alert)
              // add an action (button)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+            alert.addAction(UIAlertAction(title: Constants.alertOk, style: UIAlertAction.Style.default, handler: { _ in
                 self.refreshControl.endRefreshing()
             }))
             // show the alert
@@ -85,11 +81,12 @@ extension CanadaViewController: UITableViewDelegate, UITableViewDataSource {
         if (canadaList?.rows[indexPath.row].rowDescription) != nil {
             return UITableView.automaticDimension
         } else {
-            return 70.0
+            return Constants.rowHeight
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "canadaCell", for: indexPath) as? CanadaTableViewCell
+        // swiftlint:disable:next line_length
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.canadaCellIdentifier, for: indexPath) as? CanadaTableViewCell
         if let rowDict = canadaList?.rows[indexPath.row] {
             cell?.rowData = rowDict
         }
@@ -99,17 +96,14 @@ extension CanadaViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 // swiftlint:disable:next line_length
                 httpUtility?.downloadImage(urlString: imgHref, index: indexPath, completionHandler: { (imageUrl, downloadedImage, imgIndexPath) in
-                    print("imageUrl = \(imageUrl)")
                      DispatchQueue.main.sync {
-                        //cell.imageView?.image = self.scaleUIImageToSize(image: downloadedImage)
                         self.cache.setObject(downloadedImage, forKey: imageUrl as NSString)
-                        //self.tblView.reloadData()
                         self.canadaTableView.reloadRows(at: [imgIndexPath], with: .none)
                     }
                 })
             }
         } else {
-            cell?.rowImageView.image = Common.scaleUIImageToSize(image: UIImage(named: "noImage")!)
+            cell?.rowImageView.image = Common.scaleUIImageToSize(image: UIImage(named: Constants.blankImageName)!)
         }
         return cell!
     }

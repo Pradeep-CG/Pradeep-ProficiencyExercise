@@ -23,7 +23,7 @@ struct HttpUtility {
                         let result = try decoder.decode(T.self, from: jsonData)
                         _=completionHandler(result)
                     } catch let error {
-                        debugPrint("error occured while decoding = \(error.localizedDescription)")
+                        debugPrint(error.localizedDescription)
                     }
                 }
             }
@@ -38,7 +38,7 @@ struct HttpUtility {
             //if there is any error
             if let errorName = error {
                 //displaying the message
-                print("Error Occurred: \(errorName)")
+                print(errorName)
             } else {
                 //checking wheather the response is nil or not
                 if (response as? HTTPURLResponse) != nil {
@@ -48,19 +48,16 @@ struct HttpUtility {
                         if let image = UIImage(data: imageData) {
                             completionHandler((urlString, image, index))
                         } else {
-                            let image = UIImage(named: "noImage")
+                            let image = UIImage(named: Constants.blankImageName)
                             completionHandler((urlString, image!, index))
-                            print("Image file is currupted")
                         }
                     } else {
-                        let image = UIImage(named: "noImage")
+                        let image = UIImage(named: Constants.blankImageName)
                         completionHandler((urlString, image!, index))
-                        print("Image file is currupted")
                     }
                 } else {
-                    let image = UIImage(named: "noImage")
+                    let image = UIImage(named: Constants.blankImageName)
                     completionHandler((urlString, image!, index))
-                    print("No response from server")
                 }
             }
         }
