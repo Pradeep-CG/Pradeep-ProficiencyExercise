@@ -22,5 +22,9 @@ struct Constants {
     static let imageWidth: CGFloat = 90.0
     static let imageHeight: CGFloat = 70.0
     static let titleFontSize: CGFloat = 20.0
+    static let titleLabelHeight: CGFloat = 25.0
+    static let vertialGap: CGFloat = 35.0
     static let descriptionFontSize: CGFloat = 14.0
+    static let imageCornerRadius: CGFloat = 15.0
+    static let numberOfLines: Int = 0
 }
