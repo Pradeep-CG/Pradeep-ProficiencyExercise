@@ -20,7 +20,7 @@ struct Common {
     }
     static func scaleUIImageToSize(image: UIImage) -> UIImage {
         let hasAlpha = false
-        let size: CGSize = CGSize(width: 90, height: 70)
+        let size = CGSize(width: 90, height: 70)
         let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
         UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
         image.draw(in: CGRect(origin: .zero, size: size))

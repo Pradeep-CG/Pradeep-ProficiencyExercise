@@ -6,15 +6,16 @@
 //  Copyright © 2020 Pradeep. All rights reserved.
 //
 
-import UIKit
 import Foundation
 import Kingfisher
+import UIKit
 
 class CanadaViewController: UIViewController {
     var canadaViewModel = CanadaViewModel()
     var canadaList: CanadaModel?
     var canadaTableView = UITableView()
     private let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -45,7 +46,7 @@ class CanadaViewController: UIViewController {
     }
     // MARK: - Api Call
     func retrieveDataFromApi() {
-        canadaViewModel.getDataFromApi(apiUrl: Constants.apiString) { (response, status) in
+        canadaViewModel.getDataFromApi(apiUrl: Constants.apiString) { response, status in
             if status {
                 self.canadaList = response
                 //debugPrint("response = \(String(describing: self.canadaList))")
@@ -54,13 +55,15 @@ class CanadaViewController: UIViewController {
                     self.navigationItem.title = self.canadaList?.title
                     self.canadaTableView.reloadData()
                 }
-            } else {
+            }
+            else {
                 // create the alert
                 let alert = UIAlertController(title: Constants.messageTitle, message: Constants.messageBody, preferredStyle: UIAlertController.Style.alert)
                  // add an action (button)
-                alert.addAction(UIAlertAction(title: Constants.alertOk, style: UIAlertAction.Style.default, handler: { _ in
+                alert.addAction(UIAlertAction(title: Constants.alertOk, style: UIAlertAction.Style.default) { _ in
                     self.refreshControl.endRefreshing()
-                }))
+                }
+                )
                 // show the alert
                 self.present(alert, animated: true, completion: nil)
             }
@@ -71,12 +74,13 @@ class CanadaViewController: UIViewController {
 // MARK: - Table datasource and Delegate
 extension CanadaViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return canadaViewModel.getNumberOfRows()
+        canadaViewModel.getNumberOfRows()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (canadaList?.rows[indexPath.row].rowDescription) != nil {
             return UITableView.automaticDimension
-        } else {
+        }
+        else {
             return Constants.rowHeight
         }
     }
@@ -98,7 +102,8 @@ extension CanadaViewController: UITableViewDelegate, UITableViewDataSource {
                     cell?.rowImageView.image = Common.scaleUIImageToSize(image: UIImage(named: Constants.blankImageName)!)
                 }
             }
-        } else {
+        }
+        else {
             cell?.rowImageView.image = Common.scaleUIImageToSize(image: UIImage(named: Constants.blankImageName)!)
         }
         return cell!

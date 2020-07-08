@@ -38,6 +38,7 @@ class CanadaTableViewCell: UITableViewCell {
             descriptionLabel.text = rowData?.rowDescription
         }
     }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.addSubview(rowImageView)
