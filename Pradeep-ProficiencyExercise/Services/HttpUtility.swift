@@ -12,23 +12,27 @@ import UIKit
 struct HttpUtility {
     func getApiData<T: Decodable>(requestUrl: String, resultType: T.Type, completionHandler:@escaping(_ result: T) -> Void) {
         if Common.verifyUrl(urlString: requestUrl) {
-            let requestApiUrl = URL(string: requestUrl)!
-            URLSession.shared.dataTask(with: requestApiUrl) { responseData, httpUrlResponse, error in
-                if error == nil && httpUrlResponse != nil && !responseData!.isEmpty {
-                    if let dataString = String(data: responseData!, encoding: .isoLatin1) {
-                        let jsonData = dataString.data(using: .utf8)!
-                        let decoder = JSONDecoder()
-                        do {
-                            let result = try decoder.decode(T.self, from: jsonData)
-                            _ = completionHandler(result)
-                        }
-                        catch let error {
-                            debugPrint(error.localizedDescription)
+            
+            if let requestApiUrl = URL(string: requestUrl) {
+                URLSession.shared.dataTask(with: requestApiUrl) { responseData, httpUrlResponse, error in
+                    if error == nil && httpUrlResponse != nil {
+                        if let responseData = responseData {
+                            if let dataString = String(data: responseData, encoding: .isoLatin1) {
+                                let jsonData = dataString.data(using: .utf8)!
+                                let decoder = JSONDecoder()
+                                do {
+                                    let result = try decoder.decode(T.self, from: jsonData)
+                                    _ = completionHandler(result)
+                                }
+                                catch let error {
+                                    debugPrint(error.localizedDescription)
+                                }
+                            }
                         }
                     }
                 }
+                .resume()
             }
-            .resume()
         }
     }
     func downloadImage(urlString: String, index: IndexPath, completionHandler: @escaping (_ result: (String, UIImage, IndexPath)) -> Void) {
