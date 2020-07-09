@@ -6,6 +6,7 @@
 //  Copyright © 2020 Pradeep. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class SpinnerViewController: UIViewController {
