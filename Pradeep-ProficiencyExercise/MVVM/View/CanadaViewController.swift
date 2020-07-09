@@ -41,7 +41,7 @@ extension CanadaViewController: UITableViewDelegate, UITableViewDataSource {
         return cell!
     }
 }
-
+// MARK: - Create and Set Constraints for table
 private extension CanadaViewController {
     func loadViewComponents() {
         self.view.addSubview(canadaTableView)
@@ -72,7 +72,6 @@ private extension CanadaViewController {
         canadaViewModel.getDataFromApi(apiUrl: Constants.apiString) { response, status in
             if status {
                 self.canadaList = response
-                //debugPrint("response = \(String(describing: self.canadaList))")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.navigationItem.title = self.canadaList?.title
                     self.canadaTableView.reloadData()

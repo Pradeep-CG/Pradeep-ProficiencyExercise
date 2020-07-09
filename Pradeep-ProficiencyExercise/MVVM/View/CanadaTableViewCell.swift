@@ -53,7 +53,7 @@ class CanadaTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
 }
-
+// MARK: - Download and cache image to display in cell
 extension CanadaTableViewCell {
     func displayCellImage() {
         if let imgHref = rowData?.imageHref {
@@ -62,9 +62,9 @@ extension CanadaTableViewCell {
             self.rowImageView.kf.setImage(with: resource) { result in
                 switch result {
                 case .success(let value):
-                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                    print(value.source.url?.absoluteString ?? "")
                 case .failure(let error):
-                    print("Job failed: \(error.localizedDescription)")
+                    print(error.localizedDescription)
                     self.rowImageView.image = UIImage(named: Constants.blankImageName)!
                 }
             }
@@ -74,7 +74,7 @@ extension CanadaTableViewCell {
         }
     }
 }
-
+// MARK: - Set Constraints
 private extension CanadaTableViewCell {
     func setConstrains() {
         self.contentView.addSubview(rowImageView)

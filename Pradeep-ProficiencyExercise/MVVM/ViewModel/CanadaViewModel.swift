@@ -19,7 +19,6 @@ class CanadaViewModel {
             httpUtility.getApiData(requestUrl: Constants.apiString, resultType: CanadaModel.self) { canadaResponse in
                 self.canadaList = canadaResponse
                 complitionBlock(canadaResponse, true)
-                //debugPrint("response = \(String(describing: self.canadaList))")
             }
         }
         else {
