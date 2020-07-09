@@ -15,15 +15,16 @@ struct HttpUtility {
             let requestApiUrl = URL(string: requestUrl)!
             URLSession.shared.dataTask(with: requestApiUrl) { responseData, httpUrlResponse, error in
                 if error == nil && httpUrlResponse != nil && !responseData!.isEmpty {
-                    let dataString = String(decoding: responseData!, as: UTF8.self)
-                    let jsonData = dataString.data(using: .utf8)!
-                    let decoder = JSONDecoder()
-                    do {
-                        let result = try decoder.decode(T.self, from: jsonData)
-                        _ = completionHandler(result)
-                    }
-                    catch let error {
-                        debugPrint(error.localizedDescription)
+                    if let dataString = String(data: responseData!, encoding: .isoLatin1) {
+                        let jsonData = dataString.data(using: .utf8)!
+                        let decoder = JSONDecoder()
+                        do {
+                            let result = try decoder.decode(T.self, from: jsonData)
+                            _ = completionHandler(result)
+                        }
+                        catch let error {
+                            debugPrint(error.localizedDescription)
+                        }
                     }
                 }
             }
