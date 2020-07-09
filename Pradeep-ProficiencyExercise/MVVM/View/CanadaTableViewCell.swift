@@ -46,21 +46,7 @@ class CanadaTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.contentView.addSubview(rowImageView)
-        self.contentView.addSubview(titleLabel)
-        self.contentView.addSubview(descriptionLabel)
-        rowImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        rowImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constants.leadingValue).isActive = true
-        rowImageView.widthAnchor.constraint(equalToConstant: Constants.imageWidth).isActive = true
-        rowImageView.heightAnchor.constraint(equalToConstant: Constants.imageHeight).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Constants.leadingValue).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: rowImageView.rightAnchor, constant: Constants.trailingValue).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.leadingValue).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: Constants.titleLabelHeight).isActive = true
-        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: Constants.vertialGap).isActive = true
-        descriptionLabel.leftAnchor.constraint(equalTo: rowImageView.rightAnchor, constant: Constants.trailingValue).isActive = true
-        descriptionLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.leadingValue).isActive = true
-        descriptionLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Constants.leadingValue).isActive = true
+        self.setConstrains()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -85,5 +71,25 @@ extension CanadaTableViewCell {
         else {
             self.rowImageView.image = UIImage(named: Constants.blankImageName)!
         }
+    }
+}
+
+private extension CanadaTableViewCell {
+    func setConstrains() {
+        self.contentView.addSubview(rowImageView)
+        self.contentView.addSubview(titleLabel)
+        self.contentView.addSubview(descriptionLabel)
+        rowImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        rowImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constants.leadingValue).isActive = true
+        rowImageView.widthAnchor.constraint(equalToConstant: Constants.imageWidth).isActive = true
+        rowImageView.heightAnchor.constraint(equalToConstant: Constants.imageHeight).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Constants.leadingValue).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: rowImageView.rightAnchor, constant: Constants.trailingValue).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.leadingValue).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: Constants.titleLabelHeight).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: Constants.vertialGap).isActive = true
+        descriptionLabel.leftAnchor.constraint(equalTo: rowImageView.rightAnchor, constant: Constants.trailingValue).isActive = true
+        descriptionLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.leadingValue).isActive = true
+        descriptionLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Constants.leadingValue).isActive = true
     }
 }
