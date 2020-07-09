@@ -37,6 +37,9 @@ class CanadaTableViewCell: UITableViewCell {
         didSet {
             titleLabel.text = rowData?.title
             descriptionLabel.text = rowData?.rowDescription
+            if rowData?.rowDescription == nil {
+               descriptionLabel.text = "                                         "
+            }
             self.displayCellImage()
         }
     }

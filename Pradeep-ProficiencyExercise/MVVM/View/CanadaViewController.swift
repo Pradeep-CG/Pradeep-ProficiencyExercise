@@ -71,12 +71,7 @@ extension CanadaViewController: UITableViewDelegate, UITableViewDataSource {
         canadaViewModel.getNumberOfRows()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (canadaList?.rows[indexPath.row].rowDescription) != nil {
-            return UITableView.automaticDimension
-        }
-        else {
-            return Constants.rowHeight
-        }
+         UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.canadaCellIdentifier, for: indexPath) as? CanadaTableViewCell
