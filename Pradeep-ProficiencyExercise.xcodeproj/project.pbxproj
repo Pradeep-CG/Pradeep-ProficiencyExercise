@@ -20,6 +20,7 @@
 		275811DE24AF7A920060D578 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275811DD24AF7A920060D578 /* Reachability.swift */; };
 		275811E024AF95080060D578 /* CanadaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275811DF24AF95080060D578 /* CanadaTableViewCell.swift */; };
 		27588FA924B724DE006AEF3A /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27588FA824B724DE006AEF3A /* SpinnerViewController.swift */; };
+		27588FAC24B72947006AEF3A /* CanadaViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27588FAB24B72947006AEF3A /* CanadaViewControllerExtension.swift */; };
 		27771A6B24B3A54300DCD20B /* CanadaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27771A6A24B3A54300DCD20B /* CanadaViewModel.swift */; };
 		F159CC6E6080BEBC6F1AAE4E /* Pods_Pradeep_ProficiencyExercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E41005F52E5CF0F755174E75 /* Pods_Pradeep_ProficiencyExercise.framework */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		275811DD24AF7A920060D578 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		275811DF24AF95080060D578 /* CanadaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaTableViewCell.swift; sourceTree = "<group>"; };
 		27588FA824B724DE006AEF3A /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
+		27588FAB24B72947006AEF3A /* CanadaViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaViewControllerExtension.swift; sourceTree = "<group>"; };
 		27771A6A24B3A54300DCD20B /* CanadaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaViewModel.swift; sourceTree = "<group>"; };
 		343EEE399CC2EB9FB956C052 /* Pods-Pradeep-ProficiencyExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pradeep-ProficiencyExercise.release.xcconfig"; path = "Target Support Files/Pods-Pradeep-ProficiencyExercise/Pods-Pradeep-ProficiencyExercise.release.xcconfig"; sourceTree = "<group>"; };
 		A0BC4FDC63D92E619CF74C86 /* Pods-Pradeep-ProficiencyExercise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pradeep-ProficiencyExercise.debug.xcconfig"; path = "Target Support Files/Pods-Pradeep-ProficiencyExercise/Pods-Pradeep-ProficiencyExercise.debug.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		275811B724AF59940060D578 /* Pradeep-ProficiencyExercise */ = {
 			isa = PBXGroup;
 			children = (
+				27588FAA24B7291A006AEF3A /* Extension */,
 				275811CD24AF5AE20060D578 /* Common */,
 				275811D624AF797D0060D578 /* Services */,
 				27771A6924B3A15100DCD20B /* MVVM */,
@@ -171,6 +174,14 @@
 				275811DD24AF7A920060D578 /* Reachability.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		27588FAA24B7291A006AEF3A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				27588FAB24B72947006AEF3A /* CanadaViewControllerExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		27771A6924B3A15100DCD20B /* MVVM */ = {
@@ -372,6 +383,7 @@
 				275811DA24AF79C60060D578 /* Common.swift in Sources */,
 				275811BB24AF59940060D578 /* SceneDelegate.swift in Sources */,
 				27771A6B24B3A54300DCD20B /* CanadaViewModel.swift in Sources */,
+				27588FAC24B72947006AEF3A /* CanadaViewControllerExtension.swift in Sources */,
 				275811E024AF95080060D578 /* CanadaTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
