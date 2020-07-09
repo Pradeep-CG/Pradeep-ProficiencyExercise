@@ -14,6 +14,7 @@ class CanadaViewController: UIViewController {
     var canadaViewModel = CanadaViewModel()
     var canadaList: CanadaModel?
     var canadaTableView = UITableView()
+    let child = SpinnerViewController()
     private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -42,18 +43,24 @@ class CanadaViewController: UIViewController {
     }
     @objc private func refreshTableData(_ sender: Any) {
         // Fetch Data from api
+        self.refreshControl.endRefreshing()
         retrieveDataFromApi()
     }
     // MARK: - Api Call
     func retrieveDataFromApi() {
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = UIScreen.main.bounds
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
         canadaViewModel.getDataFromApi(apiUrl: Constants.apiString) { response, status in
             if status {
                 self.canadaList = response
                 //debugPrint("response = \(String(describing: self.canadaList))")
-                DispatchQueue.main.async {
-                    self.refreshControl.endRefreshing()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.navigationItem.title = self.canadaList?.title
                     self.canadaTableView.reloadData()
+                    self.removeSpinnerView()
                 }
             }
             else {
@@ -61,13 +68,19 @@ class CanadaViewController: UIViewController {
                 let alert = UIAlertController(title: Constants.messageTitle, message: Constants.messageBody, preferredStyle: UIAlertController.Style.alert)
                  // add an action (button)
                 alert.addAction(UIAlertAction(title: Constants.alertOk, style: UIAlertAction.Style.default) { _ in
-                    self.refreshControl.endRefreshing()
+                    self.removeSpinnerView()
                 }
                 )
                 // show the alert
                 self.present(alert, animated: true, completion: nil)
             }
         }
+    }
+    func removeSpinnerView() {
+        // remove the spinner view controller
+        self.child.willMove(toParent: nil)
+        self.child.view.removeFromSuperview()
+        self.child.removeFromParent()
     }
  }
 
