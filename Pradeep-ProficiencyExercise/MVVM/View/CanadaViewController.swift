@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Kingfisher
 import UIKit
 
 class CanadaViewController: UIViewController {
@@ -48,11 +47,7 @@ class CanadaViewController: UIViewController {
     }
     // MARK: - Api Call
     func retrieveDataFromApi() {
-        // add the spinner view controller
-        addChild(child)
-        child.view.frame = UIScreen.main.bounds
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
+        self.loadSpinnerView()
         canadaViewModel.getDataFromApi(apiUrl: Constants.apiString) { response, status in
             if status {
                 self.canadaList = response
@@ -88,22 +83,6 @@ extension CanadaViewController: UITableViewDelegate, UITableViewDataSource {
         cell?.selectionStyle = .none
         if let rowDict = canadaList?.rows[indexPath.row] {
             cell?.rowData = rowDict
-        }
-        if let imgHref = canadaList?.rows[indexPath.row].imageHref {
-            let url = URL(string: imgHref)!
-            let resource = ImageResource(downloadURL: url, cacheKey: imgHref)
-            cell?.rowImageView.kf.setImage(with: resource) { result in
-                switch result {
-                case .success(let value):
-                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                case .failure(let error):
-                    print("Job failed: \(error.localizedDescription)")
-                    cell?.rowImageView.image = Common.scaleUIImageToSize(image: UIImage(named: Constants.blankImageName)!)
-                }
-            }
-        }
-        else {
-            cell?.rowImageView.image = Common.scaleUIImageToSize(image: UIImage(named: Constants.blankImageName)!)
         }
         return cell!
     }

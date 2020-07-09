@@ -22,6 +22,13 @@ extension CanadaViewController {
         // show the alert
         self.present(alert, animated: true, completion: nil)
     }
+    func loadSpinnerView() {
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = UIScreen.main.bounds
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
     func removeSpinnerView() {
         // remove the spinner view controller
         self.child.willMove(toParent: nil)

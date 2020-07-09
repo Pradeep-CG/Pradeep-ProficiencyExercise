@@ -11,7 +11,7 @@ import Foundation
 class CanadaViewModel {
     var httpUtility = HttpUtility()
     var canadaList: CanadaModel?
-    
+
     typealias ComplitionBlock = (CanadaModel, Bool) -> Void
     func getDataFromApi(apiUrl: String, complitionBlock:@escaping (ComplitionBlock)) {
         if Reachability.isConnectedToNetwork() {

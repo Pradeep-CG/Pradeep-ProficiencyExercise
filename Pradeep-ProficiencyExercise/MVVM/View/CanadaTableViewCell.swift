@@ -6,6 +6,7 @@
 //  Copyright © 2020 Pradeep. All rights reserved.
 //
 
+import Kingfisher
 import UIKit
 
 class CanadaTableViewCell: UITableViewCell {
@@ -36,6 +37,7 @@ class CanadaTableViewCell: UITableViewCell {
         didSet {
             titleLabel.text = rowData?.title
             descriptionLabel.text = rowData?.rowDescription
+            self.displayCellImage()
         }
     }
     
@@ -59,5 +61,26 @@ class CanadaTableViewCell: UITableViewCell {
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+}
+
+extension CanadaTableViewCell {
+    func displayCellImage() {
+        if let imgHref = rowData?.imageHref {
+            let url = URL(string: imgHref)!
+            let resource = ImageResource(downloadURL: url, cacheKey: imgHref)
+            self.rowImageView.kf.setImage(with: resource) { result in
+                switch result {
+                case .success(let value):
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
+                    self.rowImageView.image = UIImage(named: Constants.blankImageName)!
+                }
+            }
+        }
+        else {
+            self.rowImageView.image = UIImage(named: Constants.blankImageName)!
+        }
     }
 }

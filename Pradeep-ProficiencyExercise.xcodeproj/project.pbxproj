@@ -145,6 +145,7 @@
 			children = (
 				275811D924AF79C60060D578 /* Common.swift */,
 				27555CB024B3B7250036D1A0 /* Constants.swift */,
+				27588FA824B724DE006AEF3A /* SpinnerViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -154,7 +155,6 @@
 			children = (
 				275811D024AF5B050060D578 /* CanadaViewController.swift */,
 				275811DF24AF95080060D578 /* CanadaTableViewCell.swift */,
-				27588FA824B724DE006AEF3A /* SpinnerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
