@@ -22,6 +22,27 @@ class CanadaViewController: UIViewController {
         loadViewComponents()
         retrieveDataFromApi()
     }
+ }
+
+// MARK: - Table datasource and Delegate
+extension CanadaViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        canadaViewModel.getNumberOfRows()
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         UITableView.automaticDimension
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.canadaCellIdentifier, for: indexPath) as? CanadaTableViewCell
+        cell?.selectionStyle = .none
+        if let rowDict = canadaList?.rows[indexPath.row] {
+            cell?.rowData = rowDict
+        }
+        return cell!
+    }
+}
+
+private extension CanadaViewController {
     func loadViewComponents() {
         self.view.addSubview(canadaTableView)
         //enable Auto Layout on contactsTableView by setting translatesAutoresizingMaskIntoConstraints to false
@@ -36,9 +57,9 @@ class CanadaViewController: UIViewController {
         canadaTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         canadaTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         canadaTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2431372549, green: 0.7647058824, blue: 0.8392156863, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = .cyan
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     @objc private func refreshTableData(_ sender: Any) {
         // Fetch Data from api
@@ -62,23 +83,5 @@ class CanadaViewController: UIViewController {
                 self.presentSingleButtonDialog()
             }
         }
-    }
- }
-
-// MARK: - Table datasource and Delegate
-extension CanadaViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        canadaViewModel.getNumberOfRows()
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         UITableView.automaticDimension
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.canadaCellIdentifier, for: indexPath) as? CanadaTableViewCell
-        cell?.selectionStyle = .none
-        if let rowDict = canadaList?.rows[indexPath.row] {
-            cell?.rowData = rowDict
-        }
-        return cell!
     }
 }
